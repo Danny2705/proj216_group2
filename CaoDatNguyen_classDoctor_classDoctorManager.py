@@ -1,5 +1,5 @@
 class Doctor:
-    def __init__(self, doctor_id, name, specialization, working_time, qualification, room_number ):
+    def __init__(self, doctor_id, name, specialization, working_time, qualification, room_number):
         self.doctor_id = doctor_id
         self.name = name
         self.specialization = specialization
@@ -53,3 +53,38 @@ class Doctor:
         return f"{self.doctor_id}_{self.name}_{self.specialization}_{self.working_time}\
         _{self.qualification}_{self.room_number}"
 
+
+class DoctorManager:
+    def __init__(self):
+        self.doctors_list = []
+        self.read_doctors_file()
+
+    @staticmethod
+    def format_dr_info(doctor):
+        return f"{doctor.doctor_id}_{doctor.name}_{doctor.specialization}_{doctor.working_time}_" \
+               f"{doctor.qualification}_{doctor.room_numnber}"
+
+    @staticmethod
+    def enter_dr_info():
+        list_dr_info = ["ID", "name", "speciality", "timing (e.g., 7am-10pm)", "qualification", "room number"]
+        list_information = []
+        for lists in list_dr_info:
+            doctor_info = input(f"Enter the doctor's {lists}: ")
+            list_information.append(doctor_info)
+
+        doctor = Doctor(*list_information)  # Important
+        return doctor
+
+    def read_doctors_file(self):
+        with open("doctors.txt", "r") as my_file:
+            for information in my_file:
+                list_information = information.strip().split('_')
+                doctor_info = list_information
+                name = ' '.join([word.capitalize() for word in name.split()])
+                doctor = Doctor(*doctor_info)
+                self.doctors_list.append(doctor)
+
+    def search_doctor_by_id(self):
+        search_doctor_id = input("Enter the doctor Id: ")
+        id_found = False
+        for list_doctor_id in self.doctors_list:
