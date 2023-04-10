@@ -1,0 +1,7 @@
+Index: CaoDatNguyen_classDoctor_classDoctorManager.py
+===================================================================
+diff --git a/CaoDatNguyen_classDoctor_classDoctorManager.py b/CaoDatNguyen_classDoctor_classDoctorManager.py
+--- a/CaoDatNguyen_classDoctor_classDoctorManager.py	
++++ b/CaoDatNguyen_classDoctor_classDoctorManager.py	
+@@ -1,0 +1,1 @@
++class Doctor:
