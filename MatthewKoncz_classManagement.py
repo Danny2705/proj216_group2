@@ -1,32 +1,86 @@
+class Management:
 
+    @staticmethod
+    def display_menu(self):
+        print("Welcome to the management system!")
 
-def display_menu():
-    main_menu = {'1':'Doctors',
-                '2':'Patients',
-                '3':'Exit Program'}
+        while True:
+            print("Main menu:")
+            print("1. Doctors submenu")
+            print("2. Patients submenu")
+            print("3. Exit")
+            choice = input("Enter your choice: ")
 
-    doctors_menu = {'1':'Display Doctor List',
-                   '2':'Search Doctor By ID',
-                   '3':'Search Doctor By Name',
-                   '4':'Add New Doctor',
-                   '5':'Edit Existing Doctor Information',
-                   '6':'Main Menu'}
+            if choice == "1":
+                self.doctors_submenu()
+            elif choice == "2":
+                self.patients_submenu()
+            elif choice == "3":
+                print("Exiting the program...")
+                break
+            else:
+                print("Invalid choice, please try again.")
 
-    patients_menu = {'1':'Display Patient List',
-                    '2':'Search by ID',
-                    '3':'Add New Patient',
-                    '4':'Edit Existing Patient Information',
-                    '5':'Main Menu'}
+    @staticmethod
+    def doctors_submenu(self):
+        while True:
+            print("Doctors submenu:")
+            print("1. Display doctors list")
+            print("2. Search for a doctor by ID")
+            print("3. Search for a doctor by name")
+            print("4. Add a new doctor")
+            print("5. Edit an existing doctor")
+            print("6. Return to main menu")
+            choice = input("Enter your choice: ")
 
-    do_main_menu = True
-    do_doctor_menu = True
-    do_patient_menu = True
+            if choice == "1":
+                # display doctors list
+                print("Displaying doctors list...")
+            elif choice == "2":
+                # search for doctor by ID
+                print("Searching for a doctor by ID...")
+            elif choice == "3":
+                # search for doctor by name
+                print("Searching for a doctor by name...")
+            elif choice == "4":
+                # add a new doctor
+                print("Adding a new doctor...")
+            elif choice == "5":
+                # edit an existing doctor
+                print("Editing an existing doctor...")
+            elif choice == "6":
+                # return to main menu
+                print("Returning to main menu...")
+                break
+            else:
+                print("Invalid choice, please try again.")
 
-    while do_main_menu:
-        choice = input(main_menu)
+    @staticmethod
+    def patients_submenu(self):
+        while True:
+            print("Patients submenu:")
+            print("1. Display patients list")
+            print("2. Search for a patient by ID")
+            print("3. Add a new patient")
+            print("4. Edit an existing patient")
+            print("5. Return to main menu")
+            choice = input("Enter your choice: ")
 
-        if choice in main_menu:
-            choice = input(doctors_menu)
-
-
-
+            if choice == "1":
+                # display patients list
+                print("Displaying patients list...")
+            elif choice == "2":
+                # search for patient by ID
+                print("Searching for a patient by ID...")
+            elif choice == "3":
+                # add a new patient
+                print("Adding a new patient...")
+            elif choice == "4":
+                # edit an existing patient
+                print("Editing an existing patient...")
+            elif choice == "5":
+                # return to main menu
+                print("Returning to main menu...")
+                break
+            else:
+                print("Invalid choice, please try again.")
