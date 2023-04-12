@@ -62,7 +62,7 @@ class DoctorManager:
     @staticmethod
     def format_dr_info(doctor):
         return f"{doctor.doctor_id}_{doctor.name}_{doctor.specialization}_{doctor.working_time}_" \
-               f"{doctor.qualification}_{doctor.room_numnber}"
+               f"{doctor.qualification}_{doctor.room_number}"
 
     @staticmethod
     def enter_dr_info():
@@ -80,7 +80,9 @@ class DoctorManager:
             for information in my_file:
                 list_information = information.strip().split('_')
                 doctor_info = list_information
+                name = doctor_info[1]
                 name = ' '.join([word.capitalize() for word in name.split()])
+                doctor_info[1] = name
                 doctor = Doctor(*doctor_info)
                 self.doctors_list.append(doctor)
 
