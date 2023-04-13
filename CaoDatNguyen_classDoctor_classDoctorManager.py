@@ -76,7 +76,7 @@ class DoctorManager:
         return doctor
 
     def read_doctors_file(self):
-        with open("doctors.txt", "r") as my_file:
+        with open("Project Data/doctors.txt", "r") as my_file:
             for information in my_file:
                 list_information = information.strip().split('_')
                 doctor_info = list_information
@@ -147,7 +147,7 @@ class DoctorManager:
                                                                doctor.room_number.title()))
 
     def write_list_of_doctors_to_file(self):
-        with open("D:/School/OOP/Project/Project Data/doctors.txt", "w") as my_file:
+        with open("Project Data/doctors.txt", "w") as my_file:
             for doctor in self.doctors_list:
                 my_file.write(
                     f"{self.format_dr_info(doctor)} \n")
@@ -156,6 +156,11 @@ class DoctorManager:
         new_doctor = self.enter_dr_info()
         self.doctors_list.append(new_doctor)
         format_doctor = self.format_dr_info(new_doctor)
-        with open("D:/School/OOP/Project/Project Data/doctors.txt", "a") as my_file:
+        with open("Project Data/doctors.txt", "a") as my_file:
             my_file.write(f"{format_doctor} \n")
         print(f"Doctor whose ID is {new_doctor} has been added")
+
+
+manager_of_doctor = DoctorManager()
+# manager_of_doctor.add_dr_to_file()
+manager_of_doctor.add_dr_to_file()
