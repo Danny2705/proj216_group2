@@ -90,3 +90,72 @@ class DoctorManager:
         search_doctor_id = input("Enter the doctor Id: ")
         id_found = False
         for list_doctor_id in self.doctors_list:
+            if list_doctor_id.doctor_id == search_doctor_id:
+                print("{:<5}{:<20}{:<15}{:<15}{:<15}{:<5}".format(
+                    "Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
+                self.display_doctor_info(list_doctor_id)
+                break
+            if not id_found:
+                print(f"Can't find the doctor with the same ID on the system")
+
+    def search_doctor_by_name(self):
+        search_doctor_name = input("Enter the doctor name: ").strip()
+        name_found = False
+        for list_doctor_name in self.doctors_list:
+            if list_doctor_name.name.strip() == search_doctor_name:
+                print("{:<5}{:<20}{:<15}{:<15}{:<15}{:<5}".format(
+                    "Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
+                self.display_doctor_info(list_doctor_name)
+                name_found = True
+                break
+        if not name_found:
+            print(f"Can't find the doctor with the same name on the system")
+
+    @staticmethod
+    def display_doctor_info(doctor):
+        print(f"{doctor.doctor_id:<5} {doctor.name:<20} {doctor.specialization:<15} {doctor.working_time:<15}"
+              f" {doctor.qualification:<15} {doctor.room_number:<5}")
+
+    def edit_doctor_info(self):
+        edit_doctor_id = input("Please enter the id of the doctor that you want to edit their information: ")
+        id_found = False
+        for doctor in self.doctors_list:
+            if edit_doctor_id == doctor.doctor_id:
+                id_found = True
+                name = input("Enter new Name:")
+                specialization = input("Enter new Specialist in: ")
+                timing = input("Enter new Timing: ")
+                qualification = input("Enter new Qualification: ")
+                room_number = input('Enter new Room Number: ')
+                doctor.name = name
+                doctor.specialization = specialization
+                doctor.timing = timing
+                doctor.qualification = qualification
+                doctor.room_number = room_number
+                self.write_list_of_doctors_to_file()
+                print(f"Doctor whose ID is {edit_doctor_id} has been edited")
+                break
+        if not id_found:
+            print("Can't find the doctor with the same ID on the system")
+
+    def display_doctors_list(self):
+        for doctor in self.doctors_list:
+            print("{:<5}{:<20}{:<15}{:<15}{:<20}{:<10}".format(doctor.doctor_id.title(), doctor.name.title(),
+                                                               doctor.specialization.title(),
+                                                               doctor.working_time.title(),
+                                                               doctor.qualification.upper(),
+                                                               doctor.room_number.title()))
+
+    def write_list_of_doctors_to_file(self):
+        with open("D:/School/OOP/Project/Project Data/doctors.txt", "w") as my_file:
+            for doctor in self.doctors_list:
+                my_file.write(
+                    f"{self.format_dr_info(doctor)} \n")
+
+    def add_dr_to_file(self):
+        new_doctor = self.enter_dr_info()
+        self.doctors_list.append(new_doctor)
+        format_doctor = self.format_dr_info(new_doctor)
+        with open("D:/School/OOP/Project/Project Data/doctors.txt", "a") as my_file:
+            my_file.write(f"{format_doctor} \n")
+        print(f"Doctor whose ID is {new_doctor} has been added")
