@@ -71,7 +71,6 @@ class DoctorManager:
         for lists in list_dr_info:
             doctor_info = input(f"Enter the doctor's {lists}: ")
             list_information.append(doctor_info)
-
         doctor = Doctor(*list_information)  # Important
         return doctor
 
@@ -155,4 +154,4 @@ class DoctorManager:
 
 manager_of_doctor = DoctorManager()
 # manager_of_doctor.add_dr_to_file()
-manager_of_doctor.edit_doctor_info()
+# manager_of_doctor.edit_doctor_info()
