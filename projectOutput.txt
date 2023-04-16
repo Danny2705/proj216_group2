@@ -2,7 +2,7 @@ Welcome to Alberta Hospital (AH) Managment system
 Select from the following options, or select 3 to stop: 
 1 - 	Doctors
 2 - 	Patients
-3 -	Exit Program 
+3 -	    Exit Program
 >>> 1
 
 Doctors Menu:
