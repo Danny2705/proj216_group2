@@ -118,24 +118,17 @@ class DoctorManager:
 
     def edit_doctor_info(self):
         edit_doctor_id = input("Please enter the id of the doctor that you want to edit their information: ")
-        id_found = False
         for doctor in self.doctors_list:
             if edit_doctor_id == doctor.doctor_id:
-                id_found = True
-                name = input("Enter new Name:")
-                specialization = input("Enter new Specialist in: ")
-                timing = input("Enter new Timing: ")
-                qualification = input("Enter new Qualification: ")
-                room_number = input('Enter new Room Number: ')
-                doctor.name = name
-                doctor.specialization = specialization
-                doctor.timing = timing
-                doctor.qualification = qualification
-                doctor.room_number = room_number
-                self.write_list_of_doctors_to_file()
-                print(f"Doctor whose ID is {edit_doctor_id} has been edited")
-                break
-        if not id_found:
+                fields = ["Name", "Specilist in", "Timing", "Qualification", "Room Number"]
+                for field in fields:
+                    new_info = input(f"Enter new {field}: ")
+                    doctor.name, doctor.specialization, doctor.timing, \
+                        doctor.qualification, doctor.room_number = new_info
+                    self.write_list_of_doctors_to_file()
+                    print(f"Doctor whose ID is {edit_doctor_id} has been edited")
+                    break
+        else:
             print("Can't find the doctor with the same ID on the system")
 
     def display_doctors_list(self):
@@ -162,3 +155,4 @@ class DoctorManager:
 
 manager_of_doctor = DoctorManager()
 # manager_of_doctor.add_dr_to_file()
+manager_of_doctor.edit_doctor_info()
