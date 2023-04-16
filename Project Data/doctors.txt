@@ -5,4 +5,4 @@ id_Name_specilist_timing_qualification_roomNb
 33_Dr.david_Artho_10-4PM_MBBS,MS_40 
 123_Dr. Ross_Headackes_8-10am_Mst_102 
 66_Dr. Mike_Heart_9am-5pm_MS_2 
-66_Mr. TOm_heart_5_MS_1 
+66_Mr. Tom_heart_5_MS_1 
