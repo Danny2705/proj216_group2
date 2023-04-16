@@ -66,7 +66,7 @@ class DoctorManager:
 
     @staticmethod
     def enter_dr_info():
-        list_dr_info = ["ID", "name", "speciality", "timing (e.g., 7am-10pm)", "qualification", "room number"]
+        list_dr_info = ["ID", "name", "specility", "timing (e.g., 7am-10pm)", "qualification", "room number"]
         list_information = []
         for lists in list_dr_info:
             doctor_info = input(f"Enter the doctor's {lists}: ")
@@ -155,4 +155,5 @@ class DoctorManager:
 
 manager_of_doctor = DoctorManager()
 # manager_of_doctor.add_dr_to_file()
-manager_of_doctor.edit_doctor_info()
+manager_of_doctor.write_list_of_doctors_to_file()
+
