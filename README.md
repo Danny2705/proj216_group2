@@ -15,4 +15,4 @@ The group members include:
     Do with class Management.
 
 Our group members will review all the program at the
-end to make sure it runs and DRY>
+end to make sure it runs and DRY
