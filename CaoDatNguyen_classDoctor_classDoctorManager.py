@@ -149,8 +149,7 @@ class DoctorManager:
     def write_list_of_doctors_to_file(self):
         with open("Project Data/doctors.txt", "w") as my_file:
             for doctor in self.doctors_list:
-                my_file.write(
-                    f"{self.format_dr_info(doctor)} \n")
+                my_file.write(f"{self.format_dr_info(doctor)} \n")
 
     def add_dr_to_file(self):
         new_doctor = self.enter_dr_info()
@@ -163,4 +162,3 @@ class DoctorManager:
 
 manager_of_doctor = DoctorManager()
 # manager_of_doctor.add_dr_to_file()
-manager_of_doctor.add_dr_to_file()
