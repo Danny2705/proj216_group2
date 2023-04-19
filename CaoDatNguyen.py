@@ -90,6 +90,7 @@ class DoctorManager:
                 print("{:<5}{:<23}{:<16}{:<16}{:<17}{:<8}".format(
                     "Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
                 self.display_doctor_info(list_doctor_id)
+                id_found = True
                 break
         if not id_found:
             print(f"Can't find the doctor with the same ID on the system")
@@ -117,9 +118,11 @@ class DoctorManager:
         for doctor in self.doctors_list:
             if edit_doctor_id == doctor.doctor_id:
                 fields = ["Name", "Specialist in", "Timing", "Qualification", "Room Number"]
+                new_values = []
                 for field in fields:
                     new_info = input(f"Enter new {field}: ")
-                    doctor.name, doctor.specialization, doctor.timing, \
+                    new_values.append(new_info)
+                    doctor.name, doctor.specialization, doctor.working_time, \
                         doctor.qualification, doctor.room_number = new_info
                     self.write_list_of_doctors_to_file()
                     print(f"Doctor whose ID is {edit_doctor_id} has been edited")
@@ -154,3 +157,200 @@ class DoctorManager:
 # manager_of_doctor = DoctorManager()
 # # manager_of_doctor.add_dr_to_file()
 # # manager_of_doctor.edit_doctor_info()
+
+
+class Patient:
+    def __init__(self, patient_id=None, name=None, disease=None,
+                 gender=None, age=None):
+        self.patient_id = patient_id
+        self.name = name
+        self.disease = disease
+        self.gender = gender
+        self.age = age
+
+    def getters(self):
+        def get_patient_id():
+            return self.patient_id
+
+        def get_name():
+            return self.name
+
+        def get_disease():
+            return self.disease
+
+        def get_gender():
+            return self.gender
+
+        def get_age():
+            return self.age
+
+        return get_patient_id, get_name, get_disease, get_gender, get_age
+
+    def setters(self):
+        def set_patient_id(new_patient_id):
+            self.patient_id = new_patient_id
+
+        def set_name(new_name):
+            self.name = new_name
+
+        def set_disease(new_disease):
+            self.disease = new_disease
+
+        def set_gender(new_gender):
+            self.gender = new_gender
+
+        def set_age(new_age):
+            self.age = new_age
+
+        return set_patient_id, set_name, set_disease, set_gender, set_age
+
+    def __str__(self):
+        return f"{self.patient_id}_{self.name}_{self.disease}_{self.gender}_{self.age}"
+
+
+class PatientManager:
+    def __init__(self):
+        self.patients_list = []
+        self.read_patients_file()
+
+    @staticmethod
+    def format_patient_info_for_file(patient):
+        return f"{patient.patient_id}_{patient.name}_{patient.disease}_{patient.gender}_" \
+               f"{patient.age}"
+
+    @staticmethod
+    def enter_patient_info():
+        patient_id = input("Enter Patient id: ")
+        name = input("Enter Patient name: ")
+        disease = input("Enter Patient disease: ")
+        gender = input("Enter Patient gender: ")
+        age = input("Enter Patient age: ")
+
+        patient = Patient(patient_id, name, disease, gender, age)
+        return patient
+
+    def read_patients_file(self):
+        with open('D:/School/OOP/Project/Project Data/patients.txt', 'r') as my_file:
+            for information in my_file:
+                list_information = information.strip().split('_')
+                patient = Patient(list_information[0], list_information[1], list_information[2], list_information[3],
+                                  list_information[4])
+                self.patients_list.append(patient)
+
+    def search_patient_by_id(self):
+        search_patient_id = input("Enter the Patient Id: ")
+        id_found = False
+        for list_patient_id in self.patients_list:
+            if list_patient_id.patient_id == search_patient_id:
+                print(self.format_patient_info_for_file(list_patient_id))
+                id_found = True
+                break
+        if not id_found:
+            print(f"Can't find the Patient with the same id on the system")
+
+    @staticmethod
+    def display_patient_info(patient):
+        print(f"{patient.patient_id:<5} {patient.name:<20} {patient.disease:<15} {patient.gender:<15}"
+              f" {patient.age:<15} ")
+
+    def edit_patient_info_by_id(self):
+        edit_patient_id = input("Please enter the id of the Patient that you want to edit their information: ")
+        id_found = False
+        for patient in self.patients_list:
+            if edit_patient_id == patient.id:
+                id_found = True
+                name = input("Enter new Name:")
+                disease = input("Enter new disease ")
+                gender = input("Enter new gender: ")
+                age = input("Enter new age: ")
+                patient.name = name
+                patient.disease = disease
+                patient.gender = gender
+                patient.age = age
+                self.write_list_of_patients_to_file()
+                print(f"Doctor whose ID is {edit_patient_id} has been edited")
+                break
+        if not id_found:
+            print("Can't find the doctor with the same ID on the system")
+
+    def display_patients_list(self):
+        for patient in self.patients_list:
+            self.display_patient_info(patient)
+
+    def write_list_of_patients_to_file(self):
+        with open("/pythonProject5/venv/Scripts/doctors.txt", "w") as my_file:
+            for patient in self.patients_list:
+                my_file.write(
+                    f"{self.format_patient_info_for_file(patient)} \n")
+
+    def add_patient_to_file(self):
+        new_patient = self.enter_patient_info()
+        self.patients_list.append(new_patient)
+        format_patient = self.format_patient_info_for_file(new_patient)
+        with open("/pythonProject5/venv/Scripts/doctors.txt", "a") as my_file:
+            my_file.write(f"{format_patient} \n")
+        print(f"Doctor whose ID is {new_patient} has been added")
+
+
+class Management:
+    def __init__(self):
+        self.doctor_manager = DoctorManager()
+        self.patient_manager = PatientManager()
+
+    def display_menu(self):
+        while True:
+            user_choice = input("Select from the following options, or select 3 to stop: \n"
+                                "1 - Doctors \n"
+                                "2 - Patients \n"
+                                "3 - Exit Program \n")
+            if user_choice == "1":
+                while True:
+                    option = input("Doctors Menu: \n"
+                                   "1 - Display Doctors list \n"
+                                   "2 - Search for doctor by ID \n"
+                                   "3 - Search for doctor by name \n"
+                                   "4 - Add doctor \n"
+                                   "5 - Edit doctor info \n"
+                                   "6 - Back to the Main Menu \n")
+
+                    doctor_menu = {
+                        "1": self.doctor_manager.display_doctors_list,
+                        "2": self.doctor_manager.search_doctor_by_id,
+                        "3": self.doctor_manager.search_doctor_by_name,
+                        "4": self.doctor_manager.add_dr_to_file,
+                        "5": self.doctor_manager.edit_doctor_info,
+                        "6": self.display_menu
+                    }
+                    if option in doctor_menu:
+                        doctor_menu[option]()
+                        if option == "6":
+                            break
+            elif user_choice == "2":
+                while True:
+                    option = input("Patients Menu: \n"
+                                   "1 - Display patients list \n"
+                                   "2 - Search for patient by ID \n"
+                                   "3 - Add patient \n"
+                                   "4 - Edit patient info \n"
+                                   "5 - Back to the Main Menu \n")
+
+                    patient_menu = {
+                        "1": self.patient_manager.display_patients_list,
+                        "2": self.patient_manager.search_patient_by_id,
+                        "3": self.patient_manager.add_patient_to_file,
+                        "4": self.patient_manager.edit_patient_info_by_id,
+                        "5": self.display_menu
+                    }
+                    if option in patient_menu:
+                        patient_menu[option]()
+                        if option == "5":
+                            break
+            elif user_choice == "3":
+                print("Thanks for using the program. Bye!")
+                break
+
+
+# Main program
+print("Welcome to Alberta Hospital (AH) Management system")
+management = Management()
+management.display_menu()
