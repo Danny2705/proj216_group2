@@ -66,7 +66,7 @@ class DoctorManager:
 
     @staticmethod
     def enter_dr_info():
-        list_dr_info = ["ID", "name", "specility", "timing (e.g., 7am-10pm)", "qualification", "room number"]
+        list_dr_info = ["ID", "name", "speciality", "timing (e.g., 7am-10pm)", "qualification", "room number"]
         list_information = []
         for lists in list_dr_info:
             doctor_info = input(f"Enter the doctor's {lists}: ")
@@ -119,7 +119,7 @@ class DoctorManager:
         edit_doctor_id = input("Please enter the id of the doctor that you want to edit their information: ")
         for doctor in self.doctors_list:
             if edit_doctor_id == doctor.doctor_id:
-                fields = ["Name", "Specilist in", "Timing", "Qualification", "Room Number"]
+                fields = ["Name", "Specialist in", "Timing", "Qualification", "Room Number"]
                 for field in fields:
                     new_info = input(f"Enter new {field}: ")
                     doctor.name, doctor.specialization, doctor.timing, \
