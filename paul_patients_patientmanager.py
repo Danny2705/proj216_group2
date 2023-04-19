@@ -45,6 +45,19 @@ class Patient:
     def __str__(self):
         return f"{self.patient_id}_{self.patient_name}_{self.disease}_{self.gender}_{self.age}"
 
+    class PatientManagement:
+        def __init__(self):
+            self.patients = []
+            self.read_patients_file()
+
+        @staticmethod
+        def format_patient_info(patient):
+            formatted_info = f"{patient.patient_id}_{patient.patient_name}_{patient.disease}_{patient.gender}/" \
+                             f"_{patient.age}"
+            return formatted_info
+
+        @staticmethod
+
 
 
 
