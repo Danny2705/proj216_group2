@@ -56,7 +56,20 @@ class Patient:
                              f"_{patient.age}"
             return formatted_info
 
-        @staticmethod
+        def enter_patient_info(self):
+            patient = Patient
+            self.id = input("Enter the patients ID: ")
+            self.name = input("Enter the patients name: ")
+            self.disease = input("Enter the patients disease: ")
+            self.gender = input("Enter the patients gender: ")
+            self.age = input("Enter the patients age: ")
+
+            return patient
+
+        
+
+
+
 
 
 
