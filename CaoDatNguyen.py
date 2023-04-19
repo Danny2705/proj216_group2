@@ -77,7 +77,7 @@ class DoctorManager:
     def read_doctors_file(self):
         with open("Project Data/doctors.txt", "r") as my_file:
             for information in my_file:
-                list_information = information.strip().split('_')
+                list_information = information.split('_')
                 doctor_info = list_information
                 name = doctor_info[1]
                 name = ' '.join([word.capitalize() for word in name.split()])
@@ -98,7 +98,7 @@ class DoctorManager:
                 print(f"Can't find the doctor with the same ID on the system")
 
     def search_doctor_by_name(self):
-        search_doctor_name = input("Enter the doctor name: ").strip()
+        search_doctor_name = input("Enter the doctor name: ")
         name_found = False
         for list_doctor_name in self.doctors_list:
             if list_doctor_name.name.strip() == search_doctor_name:
@@ -135,7 +135,7 @@ class DoctorManager:
             print("{:<5}{:<20}{:<15}{:<15}{:<20}{:<10}".format(doctor.doctor_id.title(), doctor.name.title(),
                                                                doctor.specialization.title(),
                                                                doctor.working_time.title(),
-                                                               doctor.qualification.upper(),
+                                                               doctor.qualification,
                                                                doctor.room_number.title()))
 
     def write_list_of_doctors_to_file(self):
