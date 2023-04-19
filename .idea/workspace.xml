@@ -136,7 +136,42 @@
       <option name="project" value="LOCAL" />
       <updated>1681759607282</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Update">
+      <created>1681932408702</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681932408702</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update">
+      <created>1681932443508</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1681932443508</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update">
+      <created>1681933043031</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1681933043031</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update">
+      <created>1681936652319</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681936652319</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update">
+      <created>1681937179784</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681937179784</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -152,8 +187,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update readme file" />
-    <MESSAGE value="Update" />
     <MESSAGE value="Update doctors.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update doctors.txt" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>

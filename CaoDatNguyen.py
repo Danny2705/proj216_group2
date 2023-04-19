@@ -114,21 +114,27 @@ class DoctorManager:
               f" {doctor.qualification:<16} {doctor.room_number:<8}")
 
     def edit_doctor_info(self):
-        edit_doctor_id = input("Please enter the id of the doctor that you want to edit their information: ")
+        edit_doctor_id = input("Please enter the ID of the doctor that you want to edit: ")
+        doctor_found = False
+
         for doctor in self.doctors_list:
             if edit_doctor_id == doctor.doctor_id:
                 fields = ["Name", "Specialist in", "Timing", "Qualification", "Room Number"]
                 new_values = []
+
                 for field in fields:
                     new_info = input(f"Enter new {field}: ")
                     new_values.append(new_info)
-                    doctor.name, doctor.specialization, doctor.working_time, \
-                        doctor.qualification, doctor.room_number = new_info
-                    self.write_list_of_doctors_to_file()
-                    print(f"Doctor whose ID is {edit_doctor_id} has been edited")
-                    break
-        else:
-            print("Can't find the doctor with the same ID on the system")
+
+                doctor.name, doctor.specialization, doctor.working_time, doctor.qualification, doctor.room_number \
+                    = new_values
+                self.write_list_of_doctors_to_file()
+                print(f"Doctor whose ID is {edit_doctor_id} has been edited.")
+                doctor_found = True
+                break
+
+        if not doctor_found:
+            print(f"Cannot find a doctor with ID {edit_doctor_id} in the system.")
 
     def display_doctors_list(self):
         print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format("Id", "Name", "Speciality", "Timing", "Qualification",
@@ -137,7 +143,7 @@ class DoctorManager:
             print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format(doctor.doctor_id.title(), doctor.name.title(),
                                                               doctor.specialization.title(),
                                                               doctor.working_time.title(),
-                                                              doctor.qualification,
+                                                              doctor.qualification.upper(),
                                                               doctor.room_number.title()))
 
     def write_list_of_doctors_to_file(self):
@@ -151,10 +157,9 @@ class DoctorManager:
         format_doctor = self.format_dr_info(new_doctor)
         with open("Project Data/doctors.txt", "a") as my_file:
             my_file.write(f"{format_doctor} \n")
-        print(f"Doctor whose ID is {new_doctor} has been added")
+            print(f"Doctor whose ID is {new_doctor.doctor_id.split('_')[0]} has been added")
 
 
 # manager_of_doctor = DoctorManager()
 # # manager_of_doctor.add_dr_to_file()
 # # manager_of_doctor.edit_doctor_info()
-
