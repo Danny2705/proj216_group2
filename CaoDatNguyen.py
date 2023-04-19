@@ -90,7 +90,7 @@ class DoctorManager:
         id_found = False
         for list_doctor_id in self.doctors_list:
             if list_doctor_id.doctor_id == search_doctor_id:
-                print("{:<5}{:<20}{:<15}{:<15}{:<15}{:<5}".format(
+                print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format(
                     "Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
                 self.display_doctor_info(list_doctor_id)
                 break
