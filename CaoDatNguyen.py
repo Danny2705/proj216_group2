@@ -157,4 +157,3 @@ class DoctorManager:
 manager_of_doctor = DoctorManager()
 # manager_of_doctor.add_dr_to_file()
 # manager_of_doctor.edit_doctor_info()
-
