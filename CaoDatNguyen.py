@@ -151,9 +151,10 @@ class DoctorManager:
         format_doctor = self.format_dr_info(new_doctor)
         with open("Project Data/doctors.txt", "a") as my_file:
             my_file.write(f"{format_doctor} \n")
-            print(f"Doctor whose ID is {new_doctor.get_doctor_id().split('_')[0]} has been added")
+            print(f"Doctor whose ID is {new_doctor.get_doctor_id()} has been added")
 
 
-# manager_of_doctor = DoctorManager()
-# # manager_of_doctor.add_dr_to_file()
+manager_of_doctor = DoctorManager()
+# manager_of_doctor.add_dr_to_file()
 # manager_of_doctor.edit_doctor_info()
+
