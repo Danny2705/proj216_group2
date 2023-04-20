@@ -26,7 +26,8 @@ class Doctor:
         def get_room_number():
             return self.room_number
 
-        return get_doctor_id, get_name, get_specialization, get_working_time, get_qualification, get_room_number
+        return get_doctor_id(), get_name(), get_specialization(), get_working_time(), get_qualification(), \
+            get_room_number()
 
     def setters(self):
         def set_doctor_id(new_doctor_id):
@@ -158,7 +159,6 @@ class DoctorManager:
         with open("Project Data/doctors.txt", "a") as my_file:
             my_file.write(f"{format_doctor} \n")
             print(f"Doctor whose ID is {new_doctor.doctor_id.split('_')[0]} has been added")
-
 
 # manager_of_doctor = DoctorManager()
 # # manager_of_doctor.add_dr_to_file()
