@@ -7,48 +7,41 @@ class Doctor:
         self.qualification = qualification
         self.room_number = room_number
 
-    def getters(self):
-        def get_doctor_id():
-            return self.doctor_id
+    def get_doctor_id(self):
+        return self.doctor_id
 
-        def get_name():
-            return self.name
+    def get_name(self):
+        return self.name
 
-        def get_specialization():
-            return self.specialization
+    def get_specialization(self):
+        return self.specialization
 
-        def get_working_time():
-            return self.working_time
+    def get_working_time(self):
+        return self.working_time
 
-        def get_qualification():
-            return self.qualification
+    def get_qualification(self):
+        return self.qualification
 
-        def get_room_number():
-            return self.room_number
+    def get_room_number(self):
+        return self.room_number
 
-        return get_doctor_id(), get_name(), get_specialization(), get_working_time(), get_qualification(), \
-            get_room_number()
+    def set_doctor_id(self, new_doctor_id):
+        self.doctor_id = new_doctor_id
 
-    def setters(self):
-        def set_doctor_id(new_doctor_id):
-            self.doctor_id = new_doctor_id
+    def set_name(self, new_name):
+        self.name = new_name
 
-        def set_name(new_name):
-            self.name = new_name
+    def set_specialization(self, new_specialization):
+        self.specialization = new_specialization
 
-        def set_specialization(new_specialization):
-            self.specialization = new_specialization
+    def set_working_time(self, new_working_time):
+        self.working_time = new_working_time
 
-        def set_working_time(new_working_time):
-            self.working_time = new_working_time
+    def set_qualification(self, new_qualification):
+        self.qualification = new_qualification
 
-        def set_qualification(new_qualification):
-            self.qualification = new_qualification
-
-        def set_room_number(new_room_number):
-            self.room_number = new_room_number
-
-        return set_doctor_id, set_name, set_specialization, set_working_time, set_qualification, set_room_number
+    def set_room_number(self, new_room_number):
+        self.room_number = new_room_number
 
     def __str__(self):
         return f"{self.doctor_id}_{self.name}_{self.specialization}_{self.working_time}\
@@ -87,7 +80,7 @@ class DoctorManager:
         search_doctor_id = input("Enter the doctor Id: ")
         id_found = False
         for list_doctor_id in self.doctors_list:
-            if list_doctor_id.doctor_id == search_doctor_id:
+            if list_doctor_id.get_doctor_id() == search_doctor_id:
                 print("{:<5}{:<23}{:<16}{:<16}{:<17}{:<8}".format(
                     "Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
                 self.display_doctor_info(list_doctor_id)
@@ -100,7 +93,7 @@ class DoctorManager:
         search_doctor_name = input("Enter the doctor name: ")
         name_found = False
         for list_doctor_name in self.doctors_list:
-            if list_doctor_name.name.strip() == search_doctor_name:
+            if list_doctor_name.get_name() == search_doctor_name:
                 print("{:<5}{:<23}{:<16}{:<16}{:<17}{:<8}".format(
                     "Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
                 self.display_doctor_info(list_doctor_name)
@@ -119,7 +112,7 @@ class DoctorManager:
         doctor_found = False
 
         for doctor in self.doctors_list:
-            if edit_doctor_id == doctor.doctor_id:
+            if edit_doctor_id == doctor.get_doctor_id():
                 fields = ["Name", "Specialist in", "Timing", "Qualification", "Room Number"]
                 new_values = []
 
@@ -158,7 +151,7 @@ class DoctorManager:
         format_doctor = self.format_dr_info(new_doctor)
         with open("Project Data/doctors.txt", "a") as my_file:
             my_file.write(f"{format_doctor} \n")
-            print(f"Doctor whose ID is {new_doctor.doctor_id.split('_')[0]} has been added")
+            print(f"Doctor whose ID is {new_doctor.get_doctor_id().split('_')[0]} has been added")
 
 
 # manager_of_doctor = DoctorManager()
