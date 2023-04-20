@@ -7,7 +7,6 @@
     <list default="true" id="31a2927c-8fb7-40ac-81b4-7b14e18abcb9" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CaoDatNguyen.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaoDatNguyen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project Data/doctors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Project Data/doctors.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +176,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681937179784</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Update">
+      <created>1681951844822</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681951844822</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update">
+      <created>1681953453613</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681953453613</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

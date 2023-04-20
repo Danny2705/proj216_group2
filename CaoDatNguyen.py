@@ -44,8 +44,8 @@ class Doctor:
         self.room_number = new_room_number
 
     def __str__(self):
-        return f"{self.doctor_id}_{self.name}_{self.specialization}_{self.working_time}\
-        _{self.qualification}_{self.room_number}"
+        return f"{self.get_doctor_id()}_{self.get_name()}_{self.get_specialization()}_{self.get_working_time()}\
+        _{self.get_qualification()}_{self.get_room_number()}"
 
 
 class DoctorManager:
@@ -55,8 +55,8 @@ class DoctorManager:
 
     @staticmethod
     def format_dr_info(doctor):
-        return f"{doctor.doctor_id}_{doctor.name}_{doctor.specialization}_{doctor.working_time}_" \
-               f"{doctor.qualification}_{doctor.room_number}"
+        return f"{doctor.get_doctor_id()}_{doctor.get_name()}_{doctor.get_specialization()}_" \
+               f"{doctor.get_working_time()}_{doctor.get_qualification()}_{doctor.get_room_number()}"
 
     @staticmethod
     def enter_dr_info():
@@ -104,8 +104,8 @@ class DoctorManager:
 
     @staticmethod
     def display_doctor_info(doctor):
-        print(f"{doctor.doctor_id:<4} {doctor.name:<22} {doctor.specialization:<15} {doctor.working_time:<15}"
-              f" {doctor.qualification:<16} {doctor.room_number:<8}")
+        print(f"{doctor.get_doctor_id():<4} {doctor.get_name():<22} {doctor.get_specialization():<15}"
+              f" {doctor.get_working_time():<15} {doctor.get_qualification():<16} {doctor.get_room_number():<8}")
 
     def edit_doctor_info(self):
         edit_doctor_id = input("Please enter the ID of the doctor that you want to edit: ")
@@ -120,8 +120,8 @@ class DoctorManager:
                     new_info = input(f"Enter new {field}: ")
                     new_values.append(new_info)
 
-                doctor.name, doctor.specialization, doctor.working_time, doctor.qualification, doctor.room_number \
-                    = new_values
+                doctor.set_name, doctor.set_specialization, doctor.set_working_time,\
+                    doctor.set_qualification, doctor.set_room_number = new_values
                 self.write_list_of_doctors_to_file()
                 print(f"Doctor whose ID is {edit_doctor_id} has been edited.")
                 doctor_found = True
@@ -134,11 +134,11 @@ class DoctorManager:
         print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format("Id", "Name", "Speciality", "Timing", "Qualification",
                                                           "Room Number"))
         for doctor in self.doctors_list:
-            print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format(doctor.doctor_id.title(), doctor.name.title(),
-                                                              doctor.specialization.title(),
-                                                              doctor.working_time.title(),
-                                                              doctor.qualification.upper(),
-                                                              doctor.room_number.title()))
+            print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format(doctor.get_doctor_id().title(), doctor.get_name().title(),
+                                                              doctor.get_specialization().title(),
+                                                              doctor.get_working_time().title(),
+                                                              doctor.get_qualification().upper(),
+                                                              doctor.get_room_number().title()))
 
     def write_list_of_doctors_to_file(self):
         with open("Project Data/doctors.txt", "w") as my_file:
@@ -156,4 +156,4 @@ class DoctorManager:
 
 # manager_of_doctor = DoctorManager()
 # # manager_of_doctor.add_dr_to_file()
-# # manager_of_doctor.edit_doctor_info()
+# manager_of_doctor.edit_doctor_info()
