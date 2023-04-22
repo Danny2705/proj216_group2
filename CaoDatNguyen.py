@@ -70,7 +70,7 @@ class DoctorManager:
 
     def read_doctors_file(self):
         with open("Project Data/doctors.txt", "r") as my_file:
-            next(my_file)
+            my_file.readline()
             for information in my_file:
                 list_information = information.strip().split('_')
                 doctor = Doctor(*list_information)
@@ -153,4 +153,3 @@ class DoctorManager:
         with open("Project Data/doctors.txt", "a") as my_file:
             my_file.write(f"{format_doctor} \n")
             print(f"Doctor whose ID is {new_doctor.get_doctor_id()} has been added")
-
