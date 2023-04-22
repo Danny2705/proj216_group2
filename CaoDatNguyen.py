@@ -71,7 +71,7 @@ class DoctorManager:
 
     def read_doctors_file(self):
         with open("Project Data/doctors.txt", "r") as my_file:
-            next(my_file)
+            my_file.readline()
             for information in my_file:
                 list_information = information.strip().split('_')
                 doctor = Doctor(*list_information)
@@ -115,14 +115,15 @@ class DoctorManager:
         for doctor in self.doctors_list:
             if edit_doctor_id == doctor.get_doctor_id():
                 fields = ["Name", "Specialist in", "Timing", "Qualification", "Room Number"]
+                setters = [doctor.set_name, doctor.set_specialization, doctor.set_working_time,
+                           doctor.set_qualification, doctor.set_room_number]
                 new_values = []
 
-                for field in fields:
-                    new_info = input(f"Enter new {field}: ")
-                    new_values.append(new_info)
+                for i in range(len(fields)):
+                    new_value = input(f"Enter new {fields[i]}: ")
+                    new_values.append(new_value)
+                    setters[i](new_value)
 
-                doctor.set_name, doctor.set_specialization, doctor.set_working_time, \
-                    doctor.set_qualification, doctor.set_room_number = new_values
                 self.write_list_of_doctors_to_file()
                 print(f"Doctor whose ID is {edit_doctor_id} has been edited.")
                 doctor_found = True
