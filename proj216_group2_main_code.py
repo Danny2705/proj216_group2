@@ -326,6 +326,7 @@ class Management:
             '3': lambda: doctor_manager.search_doctor_by_name(),
             '4': lambda: doctor_manager.add_dr_to_file(),
             '5': lambda :doctor_manager.edit_doctor_info(),
+            '6': lambda: None
         }
 
         patient_options = {
@@ -333,6 +334,7 @@ class Management:
             '2': lambda: patient_manager.search_patient_by_id(),
             '3': lambda: patient_manager.enter_patient_info(),
             '4': lambda: patient_manager.edit_patient_info(),
+            '5': lambda: None
         }
 
         choice, option = '', ''
@@ -342,11 +344,11 @@ class Management:
             if choice == '1':
                 while option != '6':
                     option = input(doctor_menu)
-                    doctor_options.get(option, lambda: print("Invalid option"))()
+                    doctor_options.get(option, lambda: print('Invalid Input'))()
             elif choice == '2':
                 while option != '5':
                     option = input(patient_menu)
-                    patient_options.get(option, lambda: print("Invalid option"))()
+                    patient_options.get(option, lambda: print('Invalid Input'))()
 
         print('Thanks for using the program. Bye!')
 
