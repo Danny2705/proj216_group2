@@ -232,16 +232,16 @@ class PatientManagement:
         id_found = False
         for list_patient_id in self.patient_list:
             if list_patient_id.get_patient_id() == search_patient_id:
-                print("{:<5}{:<23}{:<16}{:<16}{:<17}".format("Id", "Name", "Disease", "Gender", "Age"))
+                print("{:<5}{:<23}{:<16}{:<15}{:<17}".format("Id", "Name", "Disease", "Gender", "Age"))
                 self.display_patient_info(list_patient_id)
                 id_found = True
                 break
         if not id_found:
-            print(f"Cannot find the patient with that ID in the system")
+            print(f"Can't find the Patient with the same id on the system")
 
     @staticmethod
     def display_patient_info(patient):
-        print(f"{patient.patient_id:<4} {patient.name:<22} {patient.disease:<15} {patient.gender:<15}"
+        print(f"{patient.patient_id:<4} {patient.patient_name:<22} {patient.disease:<15} {patient.gender:<15}"
               f"{patient.age:<16}")
 
     def edit_patient_info(self):
