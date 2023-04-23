@@ -136,7 +136,8 @@ class DoctorManager:
         print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format("Id", "Name", "Speciality", "Timing", "Qualification",
                                                           "Room Number"))
         for doctor in self.doctors_list:
-            print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format(doctor.get_doctor_id().title(), doctor.get_name().title(),
+            print("{:<4}{:<22}{:<15}{:<15}{:<16}{:<8}".format(doctor.get_doctor_id().title(),
+                                                              doctor.get_name().title(),
                                                               doctor.get_specialization().title(),
                                                               doctor.get_working_time().title(),
                                                               doctor.get_qualification().upper(),
@@ -157,8 +158,8 @@ class DoctorManager:
 
 
 class Patient:
-    def __init__(self, id, name, disease, gender, age):
-        self.patient_id = id
+    def __init__(self, patient_id=None, name=None, disease=None, gender=None, age=None):
+        self.patient_id = patient_id
         self.patient_name = name
         self.disease = disease
         self.gender = gender
@@ -182,8 +183,6 @@ class Patient:
     def set_name(self, new_patient_name):
         self.patient_name = new_patient_name
 
-    def set_patient_id(self, new_patient_id):
-        self.patient_id = new_patient_id
     def set_patient_id(self, new_patient_id):
         self.patient_id = new_patient_id
 
@@ -252,14 +251,15 @@ class PatientManagement:
         for patient in self.patient_list:
             if edit_patient_id == patient.get_patient_id():
                 fields = ["Name", "Disease", "Gender", "Age"]
+                setters = [patient.set_patient_name, patient.set_patient_id, patient.set_disease,
+                           patient.set_gender, patient.set_age]
                 new_values = []
 
-                for field in fields:
-                    new_info = input(f"Enter the new {field}: ")
-                    new_values.append(new_info)
+                for i in range(len(fields)):
+                    new_value = input(f"Enter new {fields[i]}")
+                    new_values.append(new_value)
+                    setters[i](new_value)
 
-            patient.set_patient_name, patient.set_patient_id, patient.set_disease, \
-                patient.set_gender, patient.set_age = new_values
             self.write_list_of_patients_to_file()
             print(f"Patients who's ID is {edit_patient_id} has been edited.")
             patient_found = True
