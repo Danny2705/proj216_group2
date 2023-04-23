@@ -2,6 +2,7 @@
 /shelf/
 /workspace.xml
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
@@ -9,3 +10,5 @@
 /dataSources.local.xml
 =======
 >>>>>>> origin/PaulSholter
+=======
+>>>>>>> e1717d9d998a2f0d643a25003c13bba111575d3f

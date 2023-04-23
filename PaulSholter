@@ -23,8 +23,6 @@ class Patient:
 
     def set_patient_id(self, new_patient_id):
         self.patient_id = new_patient_id
-
-    def set_patient_name(self, new_patient_name):
         self.patient_name = new_patient_name
 
     def set_disease(self, new_disease):
