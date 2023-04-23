@@ -1,5 +1,5 @@
-# from CaoDatNguyen import Doctor, DoctorManager
-# from PaulSholter import Patient, PatientManager
+from CaoDatNguyen import Doctor, DoctorManager
+from PaulSholter import Patient, PatientManager
 class Management:
     @staticmethod
     def display_menu():
@@ -22,7 +22,7 @@ class Management:
     @staticmethod
     def doctor_menu():
 
-        # doctor_manager = DoctorManager()
+        doctor_manager = DoctorManager()
 
         doctor_menu = 'Doctors Menu:\n' \
                       '1 - Display Doctors list\n' \
@@ -36,25 +36,20 @@ class Management:
         while option != '6':
             option = input(doctor_menu)
             if option == '1':
-                # print(doctor_manager.display_doctors_list())
-                x = '1'
+                print(doctor_manager.display_doctors_list())
             elif option == '2':
-                # doctor_manager.search_doctor_by_id
-                x = '1'
+                doctor_manager.search_doctor_by_id
             elif option == '3':
-                # doctor_manager.search_doctor_by_name
-                x = '1'
+                doctor_manager.search_doctor_by_name
             elif option == '4':
-                # doctor_manager.add_dr_to_file
-                x = '1'
+                doctor_manager.add_dr_to_file
             elif option == '5':
-                # doctor_manager.edit_dr_info
-                x = '1'
+                doctor_manager.edit_dr_info
 
     @staticmethod
     def patient_menu():
 
-        # patient_manager = PatientManager()
+        patient_manager = PatientManager()
 
         patient_menu = 'Patients Menu:\n' \
                        '1 - Display patients list\n' \
@@ -67,16 +62,12 @@ class Management:
         while option != '5':
             option = input(patient_menu)
             if option == '1':
-                # patient_manager.display_patients_list()
-                x = '1'
+                patient_manager.display_patients_list()
             elif option == '2':
-                # patient_manager.search_patient_by_id
-                x = '1'
+                patient_manager.search_patient_by_id
             elif option == '3':
-                # patient_manager.add_patient
-                x = '1'
+                patient_manager.add_patient
             elif option == '4':
-                # patient_manager.edit_patient_info
-                x = '1'
+                patient_manager.edit_patient_info
 
 
