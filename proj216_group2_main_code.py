@@ -158,9 +158,9 @@ class DoctorManager:
 
 
 class Patient:
-    def __init__(self, patient_id=None, name=None, disease=None, gender=None, age=None):
+    def __init__(self, patient_id=None, patient_name=None, disease=None, gender=None, age=None):
         self.patient_id = patient_id
-        self.patient_name = name
+        self.patient_name = patient_name
         self.disease = disease
         self.gender = gender
         self.age = age
@@ -214,7 +214,7 @@ class PatientManagement:
         list_patient_info = ["ID", "name", "disease", "gender", "age"]
         list_information = []
         for lists in list_patient_info:
-            patient_info = input(f"Enter the patients {lists}:")
+            patient_info = input(f"Enter Patient {lists}: ")
             list_information.append(patient_info)
         patient = Patient(*list_information)
         return patient
@@ -245,18 +245,18 @@ class PatientManagement:
               f"{patient.age:<16}")
 
     def edit_patient_info(self):
-        edit_patient_id = input("Please enter the ID of the patient you would like to edit: ")
+        edit_patient_id = input("Please enter the id of the Patient that you want to edit their information: ")
         patient_found = False
 
         for patient in self.patient_list:
             if edit_patient_id == patient.get_patient_id():
                 fields = ["Name", "Disease", "Gender", "Age"]
-                setters = [patient.set_patient_name, patient.set_patient_id, patient.set_disease,
+                setters = [patient.set_name, patient.set_patient_id, patient.set_disease,
                            patient.set_gender, patient.set_age]
                 new_values = []
 
                 for i in range(len(fields)):
-                    new_value = input(f"Enter new {fields[i]}")
+                    new_value = input(f"Enter new {fields[i]}: ")
                     new_values.append(new_value)
                     setters[i](new_value)
 
@@ -269,7 +269,7 @@ class PatientManagement:
             print(f"Cannot find a patient with the ID {edit_patient_id} in the system.")
 
     def display_patient_list(self):
-        print("{:<4}{:<22}{:<15}{:16}".format("Id", "Name", "Disease", "Gender", "Age"))
+        print("{:<4}{:<22}{:<15}{:15}{:<16}".format("Id", "Name", "Disease", "Gender", "Age"))
 
         for patient in self.patient_list:
             print("{:<4}{:<22}{:<15}{:<15}{:<16}".format(patient.get_patient_id().title(),
@@ -289,7 +289,7 @@ class PatientManagement:
         format_patient = self.format_patient_info(new_patient)
         with open("Project Data/patients.txt", "a") as my_file:
             my_file.write(f"{format_patient} \n")
-            print(f"Patients whose ID is {new_patient.get_patient_id()} has been added")
+            print(f"Patient whose ID is {new_patient.get_patient_id()} has been added")
 
 
 class Management:
