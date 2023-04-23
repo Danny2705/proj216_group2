@@ -321,18 +321,18 @@ class Management:
                       '6 - Back to the Main Menu\n'
 
         doctor_options = {
-            '1': doctor_manager.display_doctors_list(),
-            '2': doctor_manager.search_doctor_by_id(),
-            '3': doctor_manager.search_doctor_by_name(),
-            '4': doctor_manager.add_dr_to_file(),
-            '5': doctor_manager.edit_doctor_info(),
+            '1': lambda: doctor_manager.display_doctors_list(),
+            '2': lambda: doctor_manager.search_doctor_by_id(),
+            '3': lambda: doctor_manager.search_doctor_by_name(),
+            '4': lambda: doctor_manager.add_dr_to_file(),
+            '5': lambda :doctor_manager.edit_doctor_info(),
         }
 
         patient_options = {
-            '1': patient_manager.display_patient_list(),
-            '2': patient_manager.search_patient_by_id(),
-            '3': patient_manager.enter_patient_info(),
-            '4': patient_manager.edit_patient_info(),
+            '1': lambda: patient_manager.display_patient_list(),
+            '2': lambda: patient_manager.search_patient_by_id(),
+            '3': lambda: patient_manager.enter_patient_info(),
+            '4': lambda: patient_manager.edit_patient_info(),
         }
 
         choice, option = '', ''
@@ -342,13 +342,11 @@ class Management:
             if choice == '1':
                 while option != '6':
                     option = input(doctor_menu)
-                    if option in doctor_options:
-                        doctor_options[option]()
+                    doctor_options.get(option, lambda: print("Invalid option"))()
             elif choice == '2':
                 while option != '5':
                     option = input(patient_menu)
-                    if option in patient_options:
-                        patient_options[option]()
+                    patient_options.get(option, lambda: print("Invalid option"))()
 
         print('Thanks for using the program. Bye!')
 
