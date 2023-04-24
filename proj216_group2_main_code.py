@@ -312,6 +312,7 @@ class Management:
             if user_choice == 3:
                 print("Thanks for using the program. Bye!")
                 break
+        return
 
     def display_doctor_submenu(self):
         while True:
