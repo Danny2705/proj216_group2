@@ -304,8 +304,8 @@ class Management:
                                 "2 - Patients \n"
                                 "3 - Exit Program \n")
             option = {
-                "1": self.display_doctor_submenu(),
-                "2": self.display_patient_submenu()
+                "1": self.display_doctor_submenu,
+                "2": self.display_patient_submenu
             }
             if user_choice in option:
                 option[user_choice]()
