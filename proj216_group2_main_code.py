@@ -311,7 +311,7 @@ class Management:
                 option[user_choice]()
             if user_choice == 3:
                 print("Thanks for using the program. Bye!")
-                break
+            break
 
     def display_doctor_submenu(self):
         while True:
