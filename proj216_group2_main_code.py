@@ -327,7 +327,7 @@ class Management:
         while option != '6':
             option = input(doctor_menu)
             if option == '1':
-                print(doctor_manager.display_doctors_list())
+                doctor_manager.display_doctors_list()
             elif option == '2':
                 doctor_manager.search_doctor_by_id()
             elif option == '3':
