@@ -73,7 +73,7 @@ class DoctorManager:
         with open("Project Data/doctors.txt", "r") as my_file:
             my_file.readline()
             for information in my_file:
-                list_information = information.strip().split('_')
+                list_information = information.split('_')
                 doctor = Doctor(*list_information)
                 self.doctors_list.append(doctor)
 
@@ -223,7 +223,7 @@ class PatientManager:
         with open("Project Data/patients.txt", "r") as my_file:
             my_file.readline()
             for information in my_file:
-                list_information = information.strip().split('_')
+                list_information = information.split('_')
                 patient = Patient(*list_information)
                 self.patient_list.append(patient)
 
