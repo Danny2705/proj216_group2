@@ -1,3 +1,6 @@
+# Group 2: Cao Dat Nguyen, Paul, Matthew
+# 14/4/2023
+# This is Alberta Hospital Management system which allows user to see, find, edit, add the information.
 class Doctor:
     def __init__(self, doctor_id=None, name=None, specialization=None,
                  working_time=None, qualification=None, room_number=None):
@@ -303,11 +306,14 @@ class Management:
                                 "1 - Doctors \n"
                                 "2 - Patients \n"
                                 "3 - Exit Program \n")
+            # Define dictionary for menu options
             option = {
                 "1": self.display_doctor_submenu,
                 "2": self.display_patient_submenu
             }
+            # Check if user input is in the options dictionary
             if user_choice in option:
+                # Call the corresponding function for the selected option
                 option[user_choice]()
             if user_choice == 3:
                 print("Thanks for using the program. Bye!")
@@ -324,6 +330,7 @@ class Management:
                            "5 - Edit doctor info \n"
                            "6 - Back to the Main Menu \n")
 
+            # Define dictionary for doctor menu options
             doctor_menu = {
                 "1": self.doctor_manager.display_doctors_list,
                 "2": self.doctor_manager.search_doctor_by_id,
@@ -347,6 +354,7 @@ class Management:
                            "4 - Edit patient info \n"
                            "5 - Back to the Main Menu \n")
 
+            # Define dictionary for patient menu options
             patient_menu = {
                 "1": self.patient_manager.display_patients_list,
                 "2": self.patient_manager.search_patient_by_id,
