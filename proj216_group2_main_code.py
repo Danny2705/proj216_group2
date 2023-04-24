@@ -221,7 +221,7 @@ class PatientManager:
 
     def read_patients_file(self):
         with open("Project Data/patients.txt", "r") as my_file:
-            next(my_file)
+            my_file.readline()
             for information in my_file:
                 list_information = information.strip().split('_')
                 patient = Patient(*list_information)
