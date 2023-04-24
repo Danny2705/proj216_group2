@@ -288,7 +288,7 @@ class PatientManager:
         format_patient = self.format_patient_info(new_patient)
         with open("Project Data/patients.txt", "a") as my_file:
             my_file.write(f"{format_patient} \n")
-            print(f"Patient whose ID is {new_patient.get_patient_id()} has been added")
+            print(f"Patient whose ID is {new_patient.get_patient_id()} has been added.")
 
 
 class Management:
