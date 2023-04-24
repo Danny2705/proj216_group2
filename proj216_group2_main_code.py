@@ -358,3 +358,7 @@ class Management:
                 patient_menu[option]()
             if option == "5":
                 break
+
+
+management = Management()
+management.display_menu()
