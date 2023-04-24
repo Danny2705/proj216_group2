@@ -69,6 +69,7 @@ class DoctorManager:
         for lists in list_dr_info:
             doctor_info = input(f"Enter the doctor's {lists}: ")
             list_information.append(doctor_info)
+
         doctor = Doctor(*list_information)
         return doctor
 
@@ -90,6 +91,7 @@ class DoctorManager:
                 self.display_doctor_info(list_doctor_id)
                 id_found = True
                 break
+
         if not id_found:
             print(f"Can't find the doctor with the same ID on the system")
 
@@ -103,6 +105,7 @@ class DoctorManager:
                 self.display_doctor_info(list_doctor_name)
                 name_found = True
                 break
+
         if not name_found:
             print(f"Can't find the doctor with the same name on the system")
 
@@ -219,6 +222,7 @@ class PatientManager:
         for lists in list_patient_info:
             patient_info = input(f"Enter Patient {lists}: ")
             list_information.append(patient_info)
+
         patient = Patient(*list_information)
         return patient
 
@@ -239,6 +243,7 @@ class PatientManager:
                 self.display_patient_info(list_patient_id)
                 id_found = True
                 break
+
         if not id_found:
             print(f"Can't find the Patient with the same id on the system")
 
