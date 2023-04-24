@@ -200,7 +200,7 @@ class Patient:
         _{self.get_age()}"
 
 
-class PatientManagement:
+class PatientManager:
     def __init__(self):
         self.patient_list = []
         self.read_patients_file()
@@ -244,15 +244,14 @@ class PatientManagement:
         print(f"{patient.patient_id:<4} {patient.patient_name:<22} {patient.disease:<15} {patient.gender:<15}"
               f"{patient.age:<16}")
 
-    def edit_patient_info(self):
+    def edit_patient_info_by_id(self):
         edit_patient_id = input("Please enter the id of the Patient that you want to edit their information: ")
         patient_found = False
 
         for patient in self.patient_list:
             if edit_patient_id == patient.get_patient_id():
                 fields = ["Name", "Disease", "Gender", "Age"]
-                setters = [patient.set_name, patient.set_patient_id, patient.set_disease,
-                           patient.set_gender, patient.set_age]
+                setters = [patient.set_name, patient.set_disease, patient.set_gender, patient.set_age]
                 new_values = []
 
                 for i in range(len(fields)):
@@ -260,15 +259,15 @@ class PatientManagement:
                     new_values.append(new_value)
                     setters[i](new_value)
 
-            self.write_list_of_patients_to_file()
-            print(f"Patients who's ID is {edit_patient_id} has been edited.")
-            patient_found = True
-            break
+                self.write_list_of_patients_to_file()
+                print(f"Patients who's ID is {edit_patient_id} has been edited.")
+                patient_found = True
+                break
 
         if not patient_found:
             print(f"Cannot find a patient with the ID {edit_patient_id} in the system.")
 
-    def display_patient_list(self):
+    def display_patients_list(self):
         print("{:<4}{:<22}{:<15}{:15}{:<16}".format("Id", "Name", "Disease", "Gender", "Age"))
 
         for patient in self.patient_list:
@@ -295,22 +294,26 @@ class PatientManagement:
 class Management:
     @staticmethod
     def display_menu():
-
-        patient_manager = PatientManagement()
-        doctor_manager = DoctorManager()
-
         main_menu = 'Welcome to Alberta Hospital (AH) Management System\n' \
                     'Select from the following options, or select 3 to stop:\n' \
                     '1 -  Doctors\n' \
                     '2 -  Patients\n' \
                     '3 -  Exit Program\n'
 
-        patient_menu = 'Patients Menu:\n' \
-                       '1 - Display patients list\n' \
-                       '2 - Search for patient by ID\n' \
-                       '3 - Add patient\n' \
-                       '4 - Edit patients info\n' \
-                       '5 - Back to the Main Menu\n'
+        choice = ''
+        while choice != '3':
+            choice = input(main_menu)
+            if choice == '1':
+                Management.doctor_menu()
+            elif choice == '2':
+                Management.patient_menu()
+
+        print('Thanks for using the program. Bye!')
+
+    @staticmethod
+    def doctor_menu():
+
+        doctor_manager = DoctorManager()
 
         doctor_menu = 'Doctors Menu:\n' \
                       '1 - Display Doctors list\n' \
@@ -320,37 +323,43 @@ class Management:
                       '5 - Edit doctor info\n' \
                       '6 - Back to the Main Menu\n'
 
-        doctor_options = {
-            '1': lambda: doctor_manager.display_doctors_list(),
-            '2': lambda: doctor_manager.search_doctor_by_id(),
-            '3': lambda: doctor_manager.search_doctor_by_name(),
-            '4': lambda: doctor_manager.add_dr_to_file(),
-            '5': lambda :doctor_manager.edit_doctor_info(),
-            '6': lambda: None
-        }
+        option = ''
+        while option != '6':
+            option = input(doctor_menu)
+            if option == '1':
+                print(doctor_manager.display_doctors_list())
+            elif option == '2':
+                doctor_manager.search_doctor_by_id()
+            elif option == '3':
+                doctor_manager.search_doctor_by_name()
+            elif option == '4':
+                doctor_manager.add_dr_to_file()
+            elif option == '5':
+                doctor_manager.edit_doctor_info()
 
-        patient_options = {
-            '1': lambda: patient_manager.display_patient_list(),
-            '2': lambda: patient_manager.search_patient_by_id(),
-            '3': lambda: patient_manager.enter_patient_info(),
-            '4': lambda: patient_manager.edit_patient_info(),
-            '5': lambda: None
-        }
+    @staticmethod
+    def patient_menu():
 
-        choice, option = '', ''
+        patient_manager = PatientManager()
 
-        while choice != '3':
-            choice = input(main_menu)
-            if choice == '1':
-                while option != '6':
-                    option = input(doctor_menu)
-                    doctor_options.get(option, lambda: print('Invalid Input'))()
-            elif choice == '2':
-                while option != '5':
-                    option = input(patient_menu)
-                    patient_options.get(option, lambda: print('Invalid Input'))()
+        patient_menu = 'Patients Menu:\n' \
+                       '1 - Display patients list\n' \
+                       '2 - Search for patient by ID\n' \
+                       '3 - Add patient\n' \
+                       '4 - Edit patients info\n' \
+                       '5 - Back to the Main Menu\n'
 
-        print('Thanks for using the program. Bye!')
+        option = ''
+        while option != '5':
+            option = input(patient_menu)
+            if option == '1':
+                patient_manager.display_patients_list()
+            elif option == '2':
+                patient_manager.search_patient_by_id()
+            elif option == '3':
+                patient_manager.add_patient_to_file()
+            elif option == '4':
+                patient_manager.edit_patient_info_by_id()
 
 
 manager = Management()
