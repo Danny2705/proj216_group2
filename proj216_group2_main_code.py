@@ -73,7 +73,7 @@ class DoctorManager:
         with open("Project Data/doctors.txt", "r") as my_file:
             my_file.readline()
             for information in my_file:
-                list_information = information.strip().split('_')
+                list_information = information.split('_')
                 doctor = Doctor(*list_information)
                 self.doctors_list.append(doctor)
 
@@ -211,7 +211,7 @@ class PatientManager:
 
     @staticmethod
     def enter_patient_info():
-        list_patient_info = ["ID", "name", "disease", "gender", "age"]
+        list_patient_info = ["id", "name", "disease", "gender", "age"]
         list_information = []
         for lists in list_patient_info:
             patient_info = input(f"Enter Patient {lists}: ")
@@ -223,7 +223,7 @@ class PatientManager:
         with open("Project Data/patients.txt", "r") as my_file:
             next(my_file)
             for information in my_file:
-                list_information = information.strip().split('_')
+                list_information = information.split('_')
                 patient = Patient(*list_information)
                 self.patient_list.append(patient)
 
@@ -250,7 +250,7 @@ class PatientManager:
 
         for patient in self.patient_list:
             if edit_patient_id == patient.get_patient_id():
-                fields = ["Name", "Disease", "Gender", "Age"]
+                fields = ["Name", "disease", "gender", "age"]
                 setters = [patient.set_name, patient.set_disease, patient.set_gender, patient.set_age]
                 new_values = []
 
@@ -260,7 +260,7 @@ class PatientManager:
                     setters[i](new_value)
 
                 self.write_list_of_patients_to_file()
-                print(f"Patients who's ID is {edit_patient_id} has been edited.")
+                print(f"Patient whose ID is {edit_patient_id} has been edited.")
                 patient_found = True
                 break
 
@@ -294,7 +294,7 @@ class PatientManager:
 class Management:
     @staticmethod
     def display_menu():
-        main_menu = 'Welcome to Alberta Hospital (AH) Management System\n' \
+        main_menu = 'Welcome to Alberta Hospital (AH) Management system\n' \
                     'Select from the following options, or select 3 to stop:\n' \
                     '1 -  Doctors\n' \
                     '2 -  Patients\n' \
@@ -346,7 +346,7 @@ class Management:
                        '1 - Display patients list\n' \
                        '2 - Search for patient by ID\n' \
                        '3 - Add patient\n' \
-                       '4 - Edit patients info\n' \
+                       '4 - Edit patient info\n' \
                        '5 - Back to the Main Menu\n'
 
         option = ''
