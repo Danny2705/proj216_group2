@@ -320,7 +320,7 @@ class Management:
             if user_choice in option:
                 # Call the corresponding function for the selected option
                 option[user_choice]()
-            if user_choice == "3":
+            elif user_choice == "3":
                 print("Thanks for using the program. Bye!")
                 break
             return
@@ -347,7 +347,7 @@ class Management:
 
             if option in doctor_menu:
                 doctor_menu[option]()
-            if option == "6":
+            elif option == "6":
                 break
 
     def display_patient_submenu(self):
@@ -370,7 +370,7 @@ class Management:
 
             if option in patient_menu:
                 patient_menu[option]()
-            if option == "5":
+            elif option == "5":
                 break
 
 
