@@ -320,10 +320,10 @@ class Management:
             if user_choice in option:
                 # Call the corresponding function for the selected option
                 option[user_choice]()
-            if user_choice == 3:
+            if user_choice == "3":
                 print("Thanks for using the program. Bye!")
                 break
-        return
+            return
 
     def display_doctor_submenu(self):
         while True:
