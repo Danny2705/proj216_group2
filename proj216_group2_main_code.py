@@ -314,7 +314,7 @@ class Management:
             # Define dictionary for menu options
             option = {
                 "1": self.display_doctor_submenu,
-                "2": self.display_patient_submenu
+                "2": self.display_patient_submenu,
             }
             # Check if user input is in the options dictionary
             if user_choice in option:
@@ -323,7 +323,6 @@ class Management:
             elif user_choice == "3":
                 print("Thanks for using the program. Bye!")
                 break
-            return
 
     def display_doctor_submenu(self):
         while True:
@@ -342,7 +341,6 @@ class Management:
                 "3": self.doctor_manager.search_doctor_by_name,
                 "4": self.doctor_manager.add_dr_to_file,
                 "5": self.doctor_manager.edit_doctor_info,
-                "6": self.display_menu
             }
 
             if option in doctor_menu:
@@ -365,7 +363,6 @@ class Management:
                 "2": self.patient_manager.search_patient_by_id,
                 "3": self.patient_manager.add_patient_to_file,
                 "4": self.patient_manager.edit_patient_info_by_id,
-                "5": self.display_menu
             }
 
             if option in patient_menu:
