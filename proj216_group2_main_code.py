@@ -150,6 +150,7 @@ class DoctorManager:
 
     def write_list_of_doctors_to_file(self):
         with open("Project Data/doctors.txt", "w") as my_file:
+            my_file.readline()
             for doctor in self.doctors_list:
                 my_file.write(f"{self.format_dr_info(doctor)} \n")
 
