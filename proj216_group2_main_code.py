@@ -59,8 +59,7 @@ class DoctorManager:
 
     @staticmethod
     def format_dr_info(doctor):
-        return f"{doctor.get_doctor_id()}_{doctor.get_name()}_{doctor.get_specialization()}_" \
-               f"{doctor.get_working_time()}_{doctor.get_qualification()}_{doctor.get_room_number()}"
+        return Doctor.__str__(doctor)
 
     @staticmethod
     def enter_dr_info():
